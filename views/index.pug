@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  if (!user)
+    a(href="/login") Connexion
+    br
+    a(href="/register") Inscription
+  if (user)
+    p Vous êtes connecté en tant que #{user.email}
+    a(href="/logout") Déconnexion

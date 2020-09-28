@@ -3,13 +3,13 @@ var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
 
 var UserSchema = new Schema({
+    email: String,
     nom: String,
     prenom: String,
-    email: String,
-    mdp: String,
-    type: String
+    password: String,
+    role: String
 });
 
-UserSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongoose, {usernameField : 'email'});
 
 module.exports = mongoose.model('User', UserSchema);
