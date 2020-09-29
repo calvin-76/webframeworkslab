@@ -1,11 +1,16 @@
 var express = require('express');
 var passport = require('passport');
 var User = require('../models/user');
+var Annonce = require('../models/annonce');
 var router = express.Router();
 
 
-router.get('/', function (req, res) {
-  res.render('index', { user : req.user });
+router.get('/', function (req, res,next) {
+  //res.render('index', { user : req.user });
+  //TODO add filter publie?
+  Annonce.find(function(err, annonce) {
+    res.render('annonces', { title: 'Vitrine des annonces', annonces: annonce, user : req.user });
+  });
 });
 
 router.get('/register', function(req, res) {

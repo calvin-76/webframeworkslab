@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    div.header
+        h1.titre #{title}
+        if (!user)
+            a(href="/login") Connexion
+            a(href="/register") Inscription
+        if (user)
+            p Vous êtes connecté en tant que #{user.email}
+            a(href="/logout") Déconnexion
+    div.row
+        each annonce in annonces
+            div.col-xs-6.col-md-4
+                div.annonce
+                    h2.annonce-titre #{annonce.titre} (#{annonce.type})
+                    div.annonce-details
+                        p.text-left Prix : #{annonce.prix}€
+                        p.text-left Date de disponibilité : #{annonce.disponibilite}
+                        a(href='/creerAnnonce').text-right Voir l'annonce
+                        img(src="1.jpg" alt='Picture not found').img-responsive
+                        p.nomargin= annonce.statutBien
+

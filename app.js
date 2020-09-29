@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 var User = require('./models/user');
+var Annonce = require('./models/annonce');
 
 // Configuration de passport
 passport.use(User.createStrategy());
@@ -68,4 +69,32 @@ app.use(function(err, req, res, next) {
 });
 
 
+
+
+User.register(
+  new User({
+    email: 'mariettecalvin@hotmail.fr',
+    nom: 'Mariette',
+    prenom: 'Calvin',
+    password: 'azerty',
+    role: 'Utilisateur'
+  }), 'Admin', function(err, user) {}
+);
+
+
+var newAnnonce1 = new Annonce({
+    titre: 'Appartement VERO',
+    type: 'Vente',
+    statutPublication: 'Publié',
+    statutBien: 'Disponible',
+    description: 'String',
+    prix: 1,
+    disponibilite: new Date("<2021-01-01>"),
+    photos:"1.jpg"
+});
+
+Annonce.create(newAnnonce1, function(err,annonce){
+    if(err) throw err;
+    console.log(annonce);
+});
 module.exports = app;

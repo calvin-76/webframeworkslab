@@ -1,8 +1,53 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 1.5vw;
+  font-family: Open Sans,sans-serif,Arial;
+  background-color: #dee1e2;
+  color: #555555;
+  display: block;
 }
 
 a {
   color: #00B7FF;
+}
+
+img {
+  margin: auto;
+}
+
+.header {
+  text-align: center;
+}
+
+.header a{
+  padding: 1vw;
+}
+
+.titre {
+  font-size: 5vw;
+  text-transform: uppercase;
+  font-family: "Open Sans",Arial,sans-serif;
+}
+
+.annonce {
+  background-color: white;
+  margin: 1vw;
+  text-align: center;
+  border: solid 1px #94a2b8;
+  display: grid;
+}
+
+.annonce-titre {
+  display: inline-table;
+  font-size: 2.5vw;
+  color: #555555;
+}
+
+.annonce-details {
+  margin: 1vw;
+  font-size: 1.5vw;
+}
+
+.nomargin {
+  margin: 1vw;
 }
