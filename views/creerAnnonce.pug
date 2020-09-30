@@ -1,0 +1,54 @@
+extends layout
+
+block content
+    .container
+        h1 Creer une annonce
+        br
+        form(role='form', action="/creerAnnonce", method="post")
+            .form-group
+                label.form-controle(for='titre')
+                    | Titre de l'annonce
+                input#titre.form-control(type='text', name="titre")
+            .form-check
+                input#vente.form-check-input(type='radio' name='type' value='Vente')
+                label.form-check-label(for='vente')
+                    | Vente
+                input#location.form-check-input(type='radio' name='type' value='Location')
+                label.form-check-label(for='location')
+                    | Location
+            .form-check
+                input#publie.form-check-input(type='radio' name='statutAnnonce' value='Publié')
+                label.form-check-label(for='publie')
+                    | Publié
+                input#nonPublie.form-check-input(type='radio' name='statutAnnonce' value='NonPublié')
+                label.form-check-label(for='nonPublie')
+                    | Non Publié
+            .form-check
+                input#disponible.form-check-input(type='radio' name='statutBien' value='Disponible')
+                label.form-check-label(for='disponible')
+                    | Disponible
+                input#louee.form-check-input(type='radio' name='statutBien' value='Louée')
+                label.form-check-label(for='louee')
+                    | Louée
+                input#vendu.form-check-input(type='radio' name='statutBien' value='Vendu')
+                label.form-check-label(for='vendu')
+                    | Vendu
+            .form-group
+                label.form-controle(for='description')
+                    | Description de l'annonce
+                input#description.form-control(type='text', name="description")
+            .form-group
+                label.form-controle(for='prix')
+                    | Prix du bien
+                input#prix.form-control(type='number', name="prix")
+            .form-group
+                label.form-controle(for='disponibilite')
+                    | Disponibilité du bien
+                input#disponibilite.form-control(type='date', name="disponibilite")
+            .form-group
+                label.form-controle(for='image')
+                    | Image
+                input#image.form-control(type='file', name="image")
+            button.btn.btn-default(type='submit') Valider
+    a(href='/')
+        button.btn.btn-primary(type="button") Retour

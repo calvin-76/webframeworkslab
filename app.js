@@ -9,6 +9,8 @@ var passport = require('passport');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var annonces = require('./routes/annonce');
+
 
 var app = express();
 
@@ -32,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', routes);
+app.use('/annonce', annonces);
 var User = require('./models/user');
 var Annonce = require('./models/annonce');
 

@@ -18,9 +18,11 @@ var AnnonceSchema = new Schema({
     description: String,
     prix: Number,
     disponibilite: Date,
-    photos:{
-        type: String
-    }
+    photos:
+        {
+            data: Buffer,
+            contentType: String
+        }
 });
 
 module.exports = mongoose.model('Annonce', AnnonceSchema);

@@ -5,6 +5,10 @@ block content
     a(href="/login") Connexion
     br
     a(href="/register") Inscription
+    br
+    a(href="/voirImage") testImage
   if (user)
     p Vous êtes connecté en tant que #{user.email}
     a(href="/logout") Déconnexion
+    br
+    a(href="/creerAnnonce") Creer annonce
