@@ -7,23 +7,32 @@ block content
         form(role='form', action="/register", method="post", style='max-width: 300px;')
             table
                 tr
-                    h3 Renseignements personnels
-                tr Nom
+                    h2 Renseignements personnels
+                tr
+                    h3 Nom
                 tr
                     .form-group
                         input.form-control(type='text', name="nom")
-                tr Prénom
+                tr
+                    h3 Prénom
                 tr
                     .form-group
                             input.form-control(type='text', name="prenom")
+                tr
+                    h3 Code d'agent immobilier (facultatif)
+                tr
+                    .form-group
+                        input.form-control(type='text', name="code")
             table
                 tr
-                    h3 Informations de connexion
-                tr Email
+                    h2 Informations de connexion
+                tr
+                    h3 Email
                 tr
                     .form-group
                             input.form-control(type='email', name="email")
-                tr Mot de passe
+                tr
+                    h3 Mot de passe
                 tr
                     .form-group
                             input.form-control(type='password', name="password")

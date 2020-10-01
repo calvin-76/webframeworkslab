@@ -6,9 +6,12 @@ block content
         if (!user)
             a(href="/login") Connexion
             a(href="/register") Inscription
-        if (user)
-            p Vous êtes connecté en tant que #{user.email}
-            a(href="/logout") Déconnexion
+        if (typeof user != 'undefined')
+            p #{user.role} : #{user.email}
+                a(href="/logout") Déconnexion
+            if (user.role === 'Admin')
+                a(href="/creerAnnonce")
+                    button(type="button") Nouvelle annonce
     div.row
         each annonce in annonces
             div.col-xs-6.col-md-4

@@ -79,9 +79,8 @@ User.register(
     email: 'mariettecalvin@hotmail.fr',
     nom: 'Mariette',
     prenom: 'Calvin',
-    password: 'azerty',
     role: 'Utilisateur'
-  }), 'Admin', function(err, user) {}
+  }), 'azerty', function(err, user) {}
 );
 
 

@@ -19,7 +19,9 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res) {
-  User.register(new User({ email : req.body.email, nom : req.body.nom ,  prenom : req.body.prenom , role : "Utilisateur"}), req.body.password,  function(err, user) {
+  var droit = 'Utilisateur';
+  if(req.body.code === '000') droit = 'Admin';
+  User.register(new User({ email : req.body.email, nom : req.body.nom ,  prenom : req.body.prenom , role : droit}), req.body.password,  function(err, user) {
     if (err) {
       return res.render('register', { user : user });
     }
