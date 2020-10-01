@@ -4,7 +4,7 @@ block content
     div.header
         if (typeof user != 'undefined')
             if (user.role === 'Admin')
-                a(href="annonce/edit/" + annonce.id)
+                a(href="edit/" + annonce.id)
                     button(type="button") Modifier annonce
     div.annonce
         h2.annonce-titre #{annonce.type}: #{annonce.titre}

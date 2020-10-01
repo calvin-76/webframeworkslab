@@ -7,9 +7,7 @@ var fs = require('fs');
 var path = require('path');
 
 router.get('/', function (req, res,next) {
-  //res.render('index', { user : req.user });
-  //TODO add filter publie?
-  Annonce.find(function(err, annonce) {
+  Annonce.find({ statutPublication: "Publié" }, function(err, annonce) {
     res.render('annonces', { title: 'Vitrine des annonces', annonces: annonce, user : req.user });
   });
 });
@@ -54,7 +52,7 @@ router.post('/creerAnnonce',function (req, res){
   var annonce = {
     titre: req.body.titre,
     type: req.body.type,
-    statutPublication: req.body.statutAnnonce,
+    statutPublication: req.body.statutPublication,
     statutBien: req.body.statutBien,
     description: req.body.description,
     prix: req.body.prix,

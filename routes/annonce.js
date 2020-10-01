@@ -15,4 +15,17 @@ router.get("/:id", function(req, res) {
     });
 });
 
+router.get("/edit/:id", function(req, res) {
+    Annonce.findById(req.params.id, function(err, response) {
+        if (!response) {
+            res.send("error");
+        } else {
+            res.render("edit", {
+                annonce : response,
+                user : req.user
+            });
+        }
+    });
+});
+
 module.exports = router;
