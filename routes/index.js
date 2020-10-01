@@ -48,7 +48,6 @@ router.get('/creerAnnonce', function (req, res) {
   res.render('creerAnnonce' , {});
 });
 
-
 router.post('/creerAnnonce',function (req, res){
   let img = req.files.image;
   img.mv('./uploads/' + img.name);
@@ -83,6 +82,5 @@ router.get('/voirImage', function (req, res) {
     res.render('image', {img: thumb});
   });
 });
-
 
 module.exports = router;

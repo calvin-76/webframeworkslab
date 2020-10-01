@@ -6,18 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var annonces = require('./routes/annonce');
-
-
 var app = express();
+
+var index = require('./routes/index');
+var annonce = require('./routes/annonce');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -32,9 +28,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', index);
+app.use('/annonce', annonce);
 
-app.use('/', routes);
-app.use('/annonce', annonces);
 var User = require('./models/user');
 var Annonce = require('./models/annonce');
 
@@ -71,9 +67,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
-
-
 User.register(
   new User({
     email: 'mariettecalvin@hotmail.fr',
@@ -82,7 +75,6 @@ User.register(
     role: 'Utilisateur'
   }), 'azerty', function(err, user) {}
 );
-
 
 var newAnnonce1 = new Annonce({
     titre: 'Appartement VERO',

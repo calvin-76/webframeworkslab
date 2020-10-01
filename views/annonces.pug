@@ -16,11 +16,11 @@ block content
         each annonce in annonces
             div.col-xs-6.col-md-4
                 div.annonce
-                    h2.annonce-titre #{annonce.titre} (#{annonce.type})
+                    h2.annonce-titre #{annonce.type}: #{annonce.titre}
                     div.annonce-details
                         p.text-left Prix : #{annonce.prix}€
                         p.text-left Date de disponibilité : #{annonce.disponibilite}
-                        a(href='/creerAnnonce').text-right Voir l'annonce
-                        img(src="1.jpg" alt='Picture not found').img-responsive
+                        a(href="/annonce/" + annonce.id).text-right Voir l'annonce
+                        img(src="photo/1.jpg" alt='Picture not found').img-responsive
                         p.nomargin= annonce.statutBien
 

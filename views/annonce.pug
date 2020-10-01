@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    div.header
+        if (typeof user != 'undefined')
+            if (user.role === 'Admin')
+                a(href="annonce/edit/" + annonce.id)
+                    button(type="button") Modifier annonce
+    div.annonce
+        h2.annonce-titre #{annonce.type}: #{annonce.titre}
+        div.annonce-details
+            p.text-left Prix : #{annonce.prix}€
+            p.text-left Date de disponibilité : #{annonce.disponibilite}
+            img(src="../photo/1.jpg" alt='Picture not found').img-responsive
+            p.nomargin= annonce.statutBien
+
+
