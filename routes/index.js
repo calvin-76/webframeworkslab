@@ -3,8 +3,19 @@ var passport = require('passport');
 var User = require('../models/user');
 var Annonce = require('../models/annonce');
 var router = express.Router();
-var fs = require('fs');
-var path = require('path');
+var multer = require("multer");/*
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/photos')
+  },
+  filename: function (req, file, cb) {
+    let extArray = file.mimetype.split("/");
+    let extension = extArray[extArray.length - 1];
+    cb(null, file.filename + '.' + extension)
+  }
+})
+var upload = multer({ storage: storage});*/
+var upload = multer({ dest: "public/photos" });
 
 router.get('/', function (req, res,next) {
   Annonce.find({ statutPublication: "Publié" }, function(err, annonce) {
@@ -42,13 +53,21 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
+router.post("/upload", upload.single("photos"), function(req, res) {
+  console.log(req.photos);
+});
+
 router.get('/creerAnnonce', function (req, res) {
   res.render('creerAnnonce' , {});
 });
 
-router.post('/creerAnnonce',function (req, res){
-  let img = req.files.image;
-  img.mv('./uploads/' + img.name);
+router.post('/creerAnnonce', upload.array("photos"),function (req, res){
+  const files = req.files;
+  let result = "s";
+  for (index = 0, len = files.length; index < len; ++index) {
+    result += files[index].path;
+  }
+
   var annonce = {
     titre: req.body.titre,
     type: req.body.type,
@@ -57,11 +76,9 @@ router.post('/creerAnnonce',function (req, res){
     description: req.body.description,
     prix: req.body.prix,
     disponibilite: req.body.disponibilite,
-    photos: {
-      data: req.files.image,
-      contentType: "image/jpeg"
-    }
+    photos: result
   }
+
   Annonce.create(annonce, (err, item) => {
     if (err) {
       console.log(err);
@@ -70,14 +87,6 @@ router.post('/creerAnnonce',function (req, res){
       // item.save();
       res.redirect('/');
     }
-  });
-});
-
-router.get('/voirImage', function (req, res) {
-  Annonce.findById('5f7343d23ceb816492aec952', function(err, result) {
-    if (err) throw (err);
-    var thumb = result.photos.data;
-    res.render('image', {img: thumb});
   });
 });
 

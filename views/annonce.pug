@@ -11,7 +11,7 @@ block content
         div.annonce-details
             p.text-left Prix : #{annonce.prix}€
             p.text-left Date de disponibilité : #{annonce.disponibilite}
-            img(src="../photo/1.jpg" alt='Picture not found').img-responsive
+            img(src="../"+annonce.photos alt='Picture not found').img-responsive
             p.nomargin= annonce.statutBien
 
 

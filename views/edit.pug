@@ -43,12 +43,12 @@ block content
                 input#prix.form-control(type='number', name="prix", value=annonce.prix)
             .form-group
                 label.form-controle(for='disponibilite')
-                    | Disponibilité du bien #{annonce.disponibilite}
-                input#disponibilite.form-control(type='date', name="disponibilite", value=annonce.disponibilite)
+                    | Disponibilité du bien
+                input#disponibilite.form-control(type='date', name="disponibilite", value=annonce.disponibilite.toISOString().substr(0, 10))
             .form-group
                 label.form-controle(for='image')
                     | Image
-                input#image.form-control(type='file', name="image")
+                input#image.form-control(type='file', name="image", value="public/photos/1.jpg")
             button.btn.btn-default(type='submit') Valider
     a(href='/')
         button.btn.btn-primary(type="button") Retour
