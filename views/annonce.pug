@@ -6,12 +6,38 @@ block content
             if (user.role === 'Admin')
                 a(href="edit/" + annonce.id)
                     button(type="button") Modifier annonce
+                a(href="delete/" + annonce.id)
+                    button(type="button") Supprimer annonce
     div.annonce
         h2.annonce-titre #{annonce.type}: #{annonce.titre}
         div.annonce-details
             p.text-left Prix : #{annonce.prix}€
             p.text-left Date de disponibilité : #{annonce.disponibilite}
-            img(src="../"+annonce.photos alt='Picture not found').img-responsive
+
+            #carouselExampleIndicators.carousel.slide.my-4(data-ride='carousel')
+                ol.carousel-indicators
+                    li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
+                    li(data-target='#carouselExampleIndicators' data-slide-to='1')
+                    li(data-target='#carouselExampleIndicators' data-slide-to='2')
+                .carousel-inner(role='listbox')
+                    .item.active
+                        img.d-block.w-100(src="../" + annonce.photos[0] alt='Picture not found')
+
+                    each image in annonce.photos
+                        .item
+                            img.d-block.w-100(src="../" + image alt='Picture not found')
+                a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+                    span.carousel-control-prev-icon(aria-hidden='false')
+                    span.sr-only Previous
+                a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+                    span.carousel-control-next-icon(aria-hidden='false')
+                    span.sr-only Next
+
             p.nomargin= annonce.statutBien
+
+
+
+
+
 
 

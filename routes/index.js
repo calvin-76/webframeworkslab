@@ -63,9 +63,9 @@ router.get('/creerAnnonce', function (req, res) {
 
 router.post('/creerAnnonce', upload.array("photos"),function (req, res){
   const files = req.files;
-  let result = "s";
+  let result = [];
   for (index = 0, len = files.length; index < len; ++index) {
-    result += files[index].path;
+    result.push((files[index].path).substring(7));
   }
 
   var annonce = {
