@@ -87,8 +87,8 @@ var newAnnonce1 = new Annonce({
     photos:["1.jpg", "1(2).jpg"]
 });
 
-Annonce.create(newAnnonce1, function(err,annonce){
+/*Annonce.create(newAnnonce1, function(err,annonce){
     if(err) throw err;
     console.log(annonce);
-});
+});*/
 module.exports = app;

@@ -28,4 +28,30 @@ router.get("/edit/:id", function(req, res) {
     });
 });
 
+router.post("/edit/:id",function (req, res){
+    Annonce.findById(req.params.id, function(err, a) {
+        if (!a)
+            return next(new Error('Could not load Document'));
+        else {
+            a.titre = req.body.titre;
+            a.type = req.body.type;
+            a.statutPublication = req.body.statutPublication;
+            a.statutBien = req.body.statutBien;
+            a.description = req.body.description;
+            a.prix = req.body.prix;
+            a.disponibilite = req.body.disponibilite;
+            a.save(function(err) {
+                if (err)
+                    console.log('error')
+                else
+                    console.log('success')
+            });
+            res.render("annonce", {
+                annonce : a,
+                user : req.user
+            });
+        }
+    });
+});
+
 module.exports = router;

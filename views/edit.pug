@@ -4,7 +4,7 @@ block content
     .container
         h1 Modifier une annonce
         br
-        form(role='form', action="/creerAnnonce", method="post")
+        form(role='form', action="/annonce/edit/" + annonce.id, method="post")
             .form-group
                 label.form-controle(for='titre')
                     | Titre de l'annonce
