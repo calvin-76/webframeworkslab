@@ -36,6 +36,41 @@ block content
             p.nomargin= annonce.statutBien
 
 
+        h2.annonce-titre F.A.Q
+        if (typeof user == 'undefined')
+            div.questions
+                input(type='text' placeholder='Posez une question..').question
+                p Vous devez être connecté pour poser une question !
+                a(href="/login")
+                    button(type="button") Connexion
+        else
+            if (user.role === 'Utilisateur')
+                div.questions
+                    input(type='text' placeholder='Posez une question..').question
+                    a(href="repondre/" + annonce.id)
+                        button(type="button") Répondre à la question
+        div.questions
+            div.reponse
+                b Question :
+                p Ou se trouve la maison ?
+                b Réponse :
+                p Le Havre à 500m de la plage
+                if (typeof user != 'undefined')
+                    if (user.role === 'Admin')
+                        a(href="repondre/" + annonce.id)
+                            button(type="button") Répondre à la question
+            div.reponse
+                b Question :
+                p Combien de chambres ?
+                b Réponse :
+                p 3
+                if (typeof user != 'undefined')
+                    if (user.role === 'Admin')
+                        a(href="repondre/" + annonce.id)
+                            button(type="button") Répondre à la question
+
+
+
 
 
 

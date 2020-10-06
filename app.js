@@ -84,7 +84,7 @@ var newAnnonce1 = new Annonce({
     description: 'String',
     prix: 1000,
     disponibilite: new Date("<2021-01-01>"),
-    photos:["1.jpg", "1(2).jpg"]
+    photos:["photos/1.jpg", "1(2).jpg"]
 });
 
 Annonce.create(newAnnonce1, function(err,annonce){

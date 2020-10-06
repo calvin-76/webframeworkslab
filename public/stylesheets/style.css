@@ -55,3 +55,22 @@ img {
 .nomargin {
   margin: 1vw;
 }
+
+.questions {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.question {
+  border: 1vw solid;
+  padding: 3vw;
+  width: 80%;
+}
+
+.reponse {
+  border: 1vw solid #5555;
+  border-radius: 3vw;
+  padding: 3vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}

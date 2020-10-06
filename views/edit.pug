@@ -4,7 +4,7 @@ block content
     .container
         h1 Modifier une annonce
         br
-        form(role='form', action="/creerAnnonce", method="post")
+        form(role='form', action="/modifierAnnonce", method="post")
             .form-group
                 label.form-controle(for='titre')
                     | Titre de l'annonce
@@ -48,7 +48,7 @@ block content
             .form-group
                 label.form-controle(for='image')
                     | Image
-                input#image.form-control(type='file', name="image", value="public/photos/1.jpg")
+                input#image.form-control(type='file', name="image")
             button.btn.btn-default(type='submit') Valider
     a(href='/')
         button.btn.btn-primary(type="button") Retour
