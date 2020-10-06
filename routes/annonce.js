@@ -42,9 +42,9 @@ router.post("/edit/:id",function (req, res){
             a.disponibilite = req.body.disponibilite;
             a.save(function(err) {
                 if (err)
-                    console.log('error')
+                    console.log('error');
                 else
-                    console.log('success')
+                    console.log('success');
             });
             res.render("annonce", {
                 annonce : a,

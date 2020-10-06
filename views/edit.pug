@@ -4,7 +4,7 @@ block content
     .container
         h1 Modifier une annonce
         br
-        form(role='form', action="/annonce/edit/" + annonce.id, method="post")
+        form(role='form', action="/annonce/edit/" + annonce.id, method="post",enctype="multipart/form-data")
             .form-group
                 label.form-controle(for='titre')
                     | Titre de l'annonce
@@ -46,9 +46,9 @@ block content
                     | Disponibilité du bien
                 input#disponibilite.form-control(type='date', name="disponibilite", value=annonce.disponibilite.toISOString().substr(0, 10))
             .form-group
-                label.form-controle(for='image')
-                    | Image
-                input#image.form-control(type='file', name="image", value="public/photos/1.jpg")
+                label.form-controle(for='photos')
+                    | Photo(s)
+                input#photos.form-control(type='file', name="photos", multiple='')
             button.btn.btn-default(type='submit') Valider
     a(href='/')
         button.btn.btn-primary(type="button") Retour
