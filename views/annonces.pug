@@ -4,8 +4,10 @@ block content
     div.header
         h1.titre #{title}
         if (!user)
-            a(href="/login") Connexion
-            a(href="/register") Inscription
+            a(href="/login")
+                button.btn.btn-secondary(type="button") Connexion
+            a(href="/register")
+                button.btn.btn-secondary(type="button") Inscription
         if (typeof user != 'undefined')
             p #{user.role} : #{user.email}
                 a(href="/logout") Déconnexion
@@ -20,7 +22,8 @@ block content
                     div.annonce-details
                         p.text-left Prix : #{annonce.prix}€
                         p.text-left Date de disponibilité : #{annonce.disponibilite.toISOString().substr(0, 10)}
-                        a(href="/annonce/" + annonce.id).text-right Voir l'annonce
+                        a(href="/annonce/" + annonce.id)
+                            button.btn.btn-secondary(type="button") Voir l'annonce
                         img(src=annonce.photos[0] alt='Picture not found').img-responsive
                         p.nomargin= annonce.statutBien
 

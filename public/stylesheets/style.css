@@ -1,3 +1,13 @@
+body {
+  padding: 50px;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  background-color: #dee1e2;
+  color: #555555;
+  display: block;
+}
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -29,53 +39,42 @@ button {
   background-color: #56baed;
   border: none;
   color: white;
-  padding: 1vw;
+  padding: 6px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   text-transform: uppercase;
-  font-size: 2vw;
-  border-radius: 1vw;
-  margin: 2vw;
+  font-size: 12px;
+  border-radius: 6px;
+  margin: 12px;
 }
 
 input[type=submit] {
   background-color: #56baed;
   border: none;
   color: white;
-  padding: 1vw;
+  padding: 6px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   text-transform: uppercase;
-  font-size: 2vw;
-  border-radius: 1vw;
-  margin: 2vw;
+  font-size: 12px;
+  border-radius: 6px;
+  margin: 12px;
 }
 
 input[type=email], input[type=password], input[type=text], input[type=date], input[type=number], input[type=file] {
   background-color: #f6f6f6;
   color: #0d0d0d;
-  padding: 3vw;
+  padding: 18px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 2vw;
-  margin: 1vw;
+  font-size: 12px;
+  margin: 6px;
   width: 90%;
   border: 1px solid #dce6f0;
-  border-radius: 1vw;
-}
-
-
-body {
-  padding: 50px;
-  font-size: 1.5vw;
-  font-family: "Poppins", sans-serif;
-  height: 100vh;
-  background-color: #dee1e2;
-  color: #555555;
-  display: block;
+  border-radius: 6px;
 }
 
 img {
@@ -94,31 +93,31 @@ img {
 }
 
 .titre {
-  font-size: 5vw;
+  font-size: 30px;
   text-transform: uppercase;
   font-family: "Open Sans",Arial,sans-serif;
 }
 
 .annonce {
   background-color: white;
-  margin: 1vw;
+  margin: 6px;
   text-align: center;
   border: solid 1px #94a2b8;
 }
 
 .annonce-titre {
   display: inline-table;
-  font-size: 2.5vw;
+  font-size: 25px;
   color: #555555;
 }
 
 .annonce-details {
-  margin: 1vw;
-  font-size: 1.5vw;
+  margin: 6px;
+  font-size: 15px;
 }
 
 .nomargin {
-  margin: 1vw;
+  margin: 6px;
 }
 
 .questions {
@@ -127,15 +126,15 @@ img {
 }
 
 .question {
-  border: 1vw solid;
+  border: 3px solid;
   padding: 3vw;
   width: 80%;
 }
 
 .reponse {
-  border: 1vw solid #5555;
-  border-radius: 3vw;
-  padding: 3vw;
-  margin-top: 1vw;
-  margin-bottom: 1vw;
+  border: 3px solid #5555;
+  border-radius: 18px;
+  padding: 18px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
