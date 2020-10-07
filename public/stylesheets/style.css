@@ -1,22 +1,88 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+
+#content-form {
+  background: #fff;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  padding: 0;
+  text-align: center;
+}
+
+#footer-form {
+  background-color: #f6f6f6;
+  border-top: 1px solid #dce6f0;
+  padding: 2vw;
+  text-align: center;
+}
+
+
+button {
+  background-color: #56baed;
+  border: none;
+  color: white;
+  padding: 1vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 2vw;
+  border-radius: 1vw;
+  margin: 2vw;
+}
+
+input[type=submit] {
+  background-color: #56baed;
+  border: none;
+  color: white;
+  padding: 1vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 2vw;
+  border-radius: 1vw;
+  margin: 2vw;
+}
+
+input[type=email], input[type=password], input[type=text], input[type=date], input[type=number], input[type=file] {
+  background-color: #f6f6f6;
+  color: #0d0d0d;
+  padding: 3vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 2vw;
+  margin: 1vw;
+  width: 90%;
+  border: 1px solid #dce6f0;
+  border-radius: 1vw;
+}
+
+
 body {
   padding: 50px;
   font-size: 1.5vw;
-  font-family: Open Sans,sans-serif,Arial;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
   background-color: #dee1e2;
   color: #555555;
   display: block;
 }
 
-a {
-  color: #00B7FF;
-}
-
-button {
-  color: #555555;
-}
-
 img {
   margin: auto;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 .header {
@@ -38,7 +104,6 @@ img {
   margin: 1vw;
   text-align: center;
   border: solid 1px #94a2b8;
-  display: grid;
 }
 
 .annonce-titre {

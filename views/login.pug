@@ -2,13 +2,13 @@ extends layout
 
 block content
     .container
-        h1 Connexion
-        br
-        form(role='form', action="/login", method="post", style='max-width: 300px;')
-            .form-group
-                input.form-control(type='email', name="email")
-            .form-group
-                input.form-control(type='password', name="password")
-            button.btn.btn-default(type='submit') Valider
-    a(href='/')
-        button.btn.btn-primary(type="button") Retour
+        .wrapper
+            #content-form
+                a(href='/')
+                    button.btn.btn-secondary(type="button") Retour
+                form(role='form', action='/login', method='post')
+                    input(type='email' name='email' placeholder='Adresse email')
+                    input(type='password' name='password' placeholder='Mot de passe')
+                    input(type='submit' value='Connexion')
+                #footer-form
+                    a(href='/register') Pas encore inscrit?

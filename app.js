@@ -40,7 +40,9 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Connexion a la base de données
-mongoose.connect('mongodb://localhost/testdb');
+mongoose.connect('mongodb://localhost/testdb')
+    .then(() => console.log('MongoDB Connected'))
+    .catch((err) => console.log(err));
 
 // Gestion des erreurs
 app.use(function(req, res, next) {
