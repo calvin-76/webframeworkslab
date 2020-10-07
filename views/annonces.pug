@@ -14,7 +14,7 @@ block content
             if (user.role === 'Admin')
                 a(href="/creerAnnonce")
                     button(type="button") Nouvelle annonce
-    div.row
+    div.row(style="align-items: flex-end;")
         each annonce in annonces
             div.col-6.col-md-4
                 div.annonce
