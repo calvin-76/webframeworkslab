@@ -18,7 +18,8 @@ var AnnonceSchema = new Schema({
     description: String,
     prix: Number,
     disponibilite: Date,
-    photos: []
+    photos: [],
+    questions: [{type: Schema.Types.ObjectId, ref: 'Question'}]
 });
 
 module.exports = mongoose.model('Annonce', AnnonceSchema);

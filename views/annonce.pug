@@ -6,68 +6,61 @@ block content
             if (user.role === 'Admin')
                 a(href="edit/" + annonce.id)
                     button(type="button") Modifier annonce
-                a(href="delete/" + annonce.id)
-                    button(type="button") Supprimer annonce
+                form(role='form', action="delete/" + annonce.id, method="post")
+                    button(type="submit") Supprimer annonce
     div.annonce
         h2.annonce-titre #{annonce.type}: #{annonce.titre}
         div.annonce-details
             p.text-left Prix : #{annonce.prix}€
             p.text-left Date de disponibilité : #{annonce.disponibilite}
 
-            #carouselExampleIndicators.carousel.slide.my-4(data-ride='carousel')
+            #carouselExampleIndicators.carousel.slide(data-ride='carousel')
                 ol.carousel-indicators
                     li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
-                    li(data-target='#carouselExampleIndicators' data-slide-to='1')
-                    li(data-target='#carouselExampleIndicators' data-slide-to='2')
-                .carousel-inner(role='listbox')
-                    .item.active
-                        img.d-block.w-100(src="../" + annonce.photos[0] alt='Picture not found')
-
-                    each image in annonce.photos
-                        .item
-                            img.d-block.w-100(src="../" + image alt='Picture not found')
+                    if annonce.photos.length > 1
+                        each photo in annonce.photos.slice(1)
+                            li(data-target='#carouselExampleIndicators' data-slide-to=annonce.photos.indexOf(photo))
+                .carousel-inner
+                    .carousel-item.active
+                        img.d-block.w-100(src="../" + annonce.photos[0] alt='slide')
+                    if annonce.photos.length > 1
+                        each photo in annonce.photos.slice(1)
+                            .carousel-item
+                                img.d-block.w-100(src="../" + photo alt='slidfe')
                 a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
-                    span.carousel-control-prev-icon(aria-hidden='false')
+                    span.carousel-control-prev-icon(aria-hidden='true')
                     span.sr-only Previous
                 a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
-                    span.carousel-control-next-icon(aria-hidden='false')
+                    span.carousel-control-next-icon(aria-hidden='true')
                     span.sr-only Next
-
             p.nomargin= annonce.statutBien
 
 
         h2.annonce-titre F.A.Q
-        if (typeof user == 'undefined')
+        if (!user)
             div.questions
-                input(type='text' placeholder='Posez une question..').question
                 p Vous devez être connecté pour poser une question !
                 a(href="/login")
                     button(type="button") Connexion
         else
-            if (user.role === 'Utilisateur')
+            if (user)
                 div.questions
-                    input(type='text' placeholder='Posez une question..').question
-                    a(href="repondre/" + annonce.id)
-                        button(type="button") Répondre à la question
+                    form(role='form', action="question/" + annonce.id, method="post")
+                        input(type='text', name="inputQuestion" placeholder='Posez une question..').question
+                        button(type="submit") Posez une question.....
         div.questions
-            div.reponse
-                b Question :
-                p Ou se trouve la maison ?
-                b Réponse :
-                p Le Havre à 500m de la plage
-                if (typeof user != 'undefined')
-                    if (user.role === 'Admin')
-                        a(href="repondre/" + annonce.id)
-                            button(type="button") Répondre à la question
-            div.reponse
-                b Question :
-                p Combien de chambres ?
-                b Réponse :
-                p 3
-                if (typeof user != 'undefined')
-                    if (user.role === 'Admin')
-                        a(href="repondre/" + annonce.id)
-                            button(type="button") Répondre à la question
+            each question in questions
+                div.reponse
+                    b Question :
+                    p #{question.text}
+                    b Réponses :
+                    each rep in question.reponses
+                        p #{rep}
+                    if (typeof user != 'undefined')
+                        if (user.role === 'Admin')
+                            form(role='form', action="repondre/" + question.id, method="post")
+                                input(type='text', name="inputReponse" placeholder='Repondez a la question...').question
+                                button(type="submit") Valider
     a(href='/')
         button.btn.btn-primary(type="button") Retour
 

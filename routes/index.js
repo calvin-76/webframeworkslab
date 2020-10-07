@@ -2,6 +2,7 @@ var express = require('express');
 var passport = require('passport');
 var User = require('../models/user');
 var Annonce = require('../models/annonce');
+var app = require('../app');
 var router = express.Router();
 var multer = require("multer");/*
 var storage = multer.diskStorage({
@@ -61,7 +62,7 @@ router.get('/creerAnnonce', function (req, res) {
   res.render('creerAnnonce' , {});
 });
 
-router.post('/creerAnnonce', upload.array("photos"),function (req, res){
+router.post('/creerAnnonce', upload.array("photos") ,function (req, res){
   const files = req.files;
   let result = [];
   for (index = 0, len = files.length; index < len; ++index) {
