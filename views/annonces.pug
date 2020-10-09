@@ -10,7 +10,8 @@ block content
                 button.btn.btn-secondary(type="button") Inscription
         if (typeof user != 'undefined')
             p #{user.role} : #{user.email}
-                a(href="/logout") Déconnexion
+            a(href="/logout")
+                button.btn.btn-secondary(type="button") Déconnexion
             if (user.role === 'Admin')
                 a(href="/creerAnnonce")
                     button(type="button") Nouvelle annonce
