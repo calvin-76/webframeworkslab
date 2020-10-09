@@ -1,16 +1,16 @@
+var should = require("should");
 var mongoose = require('mongoose');
 var User = require("../models/user.js");
-var db;
 
 describe('User', function() {
 
-    before(function(done) {
-        db = mongoose.connect('mongodb://localhost/testdb');
+    before(async () => {
+        await mongoose.connect('mongodb://localhost/testdb');
         done();
     });
 
-    after(function(done) {
-        mongoose.connection.close();
+    after(async () => {
+        await mongoose.connection.close();
         done();
     });
 
@@ -29,15 +29,15 @@ describe('User', function() {
             done();
         });
     });
-
+/*
     it('find a user by username', function(done) {
         User.findOne({ email: 'mariettecalvin@hotmail.fr' }, function(err, user) {
-            //user.email.should.eql('mariettecalvin@hotmail.fr');
+            user.email.should.eql('mariettecalvin@hotmail.fr');
             console.log("email: ", user.email);
             done();
         });
     });
-
+*/
     afterEach(function(done) {
         User.remove({}, function() {
             done();

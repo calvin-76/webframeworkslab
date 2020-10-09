@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "make test"
+    "test": "mocha"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -21,9 +21,11 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.0.1",
     "pug": "2.0.0-beta11",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "should": "^13.2.3"
   },
   "devDependencies": {
-    "express-session": "^1.17.1"
+    "express-session": "^1.17.1",
+    "supertest": "^5.0.0"
   }
 }
