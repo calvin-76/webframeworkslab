@@ -15,9 +15,10 @@ block content
                 a(href="/creerAnnonce")
                     button(type="button") Nouvelle annonce
     div.row(style="align-items: flex-end;")
+        div.col-lg-12
         each annonce in annonces
             if (annonce.statutPublication === "Publié" || user && user.role === 'Admin')
-                div.col-6.col-md-4
+                div.col-lg-4
                     div.annonce
                         h2.annonce-titre #{annonce.type}: #{annonce.titre}
                         div.annonce-details

@@ -114,6 +114,7 @@ img {
   text-align: center;
   padding: 20px;
   border-radius: 20px;
+  overflow-wrap: anywhere;
 }
 
 .annonce-titre {
@@ -203,3 +204,6 @@ div.col-6.col-md-4 {
   margin: auto;
 }
 
+.row {
+  margin:0;
+}
