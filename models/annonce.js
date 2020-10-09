@@ -18,7 +18,7 @@ var AnnonceSchema = new Schema({
     description: String,
     prix: Number,
     disponibilite: Date,
-    photos: [],
+    photos: [String],
     questions: [{type: Schema.Types.ObjectId, ref: 'Question'}]
 });
 

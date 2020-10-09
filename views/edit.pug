@@ -56,6 +56,14 @@ block content
                             | Disponibilité du bien
                         input#disponibilite.form-control(type='date' name="disponibilite" value=annonce.disponibilite.toISOString().substr(0, 10) required='')
                     .form-group
+                        label.form-controle()
+                            | Selectionnez les images à supprimer :
+                        each photo in annonce.photos
+                            .form-check
+                                input.form-check-input.invisible(type='checkbox' id='defaultCheck'+annonce.photos.indexOf(photo) name="image" value=photo)
+                                label.form-check-label(for='defaultCheck'+annonce.photos.indexOf(photo))
+                                    img.d-block.w-100(src="../../" + photo alt='slidfe')
+                    .form-group
                         label.form-controle(for='photos')
                             | Photo(s)
                         input#photos.form-control(type='file', name="photos", multiple='' accept='image/*')

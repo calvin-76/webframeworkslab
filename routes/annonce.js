@@ -41,6 +41,23 @@ router.post("/edit/:id", upload.array("photos"), function (req, res){
         if (!a)
             return next(new Error('Could not load Document'));
         else {
+            if(req.body.image){
+                if(Array.isArray(req.body.image))
+                {
+                    req.body.image.forEach(i => a.photos.splice(a.photos.indexOf(i), 1));
+                }else{
+                    a.photos.splice(req.body.image, 1)
+                }
+            }
+            const files = req.files;
+            for (index = 0; index < files.length; ++index) {
+                a.photos.push((files[index].path).substring(7));
+            }
+            if(a.photos.length === 0) {
+                a.photos.push("photos/default")
+            }else if(a.photos.includes("photos/default")){
+                a.photos.splice("photos/default", 1)
+            }
             a.titre = req.body.titre;
             a.type = req.body.type;
             a.statutPublication = req.body.statutPublication;
@@ -54,7 +71,7 @@ router.post("/edit/:id", upload.array("photos"), function (req, res){
                 else
                     console.log('success');
             });
-            res.redirect('/annonce/' + a.id);
+            res.redirect("/annonce/" + a.id);
         }
     });
 });

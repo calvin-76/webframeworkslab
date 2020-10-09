@@ -7,7 +7,7 @@ block content
                 a(href='/')
                     button.btn.btn-secondary(type="button") Retour
                 div.header
-                    if (typeof user != 'undefined')
+                    if (user)
                         if (user.role === 'Admin')
                             a(href="edit/" + annonce.id)
                                 button(type="button") Modifier annonce
