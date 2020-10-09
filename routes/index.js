@@ -37,9 +37,18 @@ router.get('/login', function(req, res) {
   res.render('login', { user : req.user });
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
-  res.redirect('/');
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    console.log(err);
+    if (err) { return next(err); }
+    if (!user) { return res.render('login', { error: "Adresse e-mail ou mot de passe incorrect"}); }
+    req.login(user, function(err) {
+      if (err) { return next(err); }
+      return res.redirect('/');
+    });
+  })(req, res, next);
 });
+
 
 router.get('/logout', function(req, res) {
   req.logout();
