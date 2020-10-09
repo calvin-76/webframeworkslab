@@ -77,8 +77,4 @@ router.post('/creerAnnonce', upload.array("photos") ,function (req, res){
   });
 });
 
-router.post("/upload", upload.single("photos"), function(req, res) {
-  console.log(req.photos);
-});
-
 module.exports = router;
