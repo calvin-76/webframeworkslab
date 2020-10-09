@@ -8,7 +8,7 @@ var multer = require("multer");
 var upload = multer({ dest: "public/photos" });
 
 router.get('/', function (req, res,next) {
-  Annonce.find({ statutPublication: "Publié" }, function(err, annonce) {
+  Annonce.find(function(err, annonce) {
     res.render('annonces', { title: 'Vitrine des annonces', annonces: annonce, user : req.user });
   });
 });

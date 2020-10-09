@@ -46,7 +46,7 @@ router.post("/edit/:id", upload.array("photos"), function (req, res){
                 {
                     req.body.image.forEach(i => a.photos.splice(a.photos.indexOf(i), 1));
                 }else{
-                    a.photos.splice(req.body.image, 1)
+                    a.photos.splice(a.photos.indexOf(req.body.image), 1)
                 }
             }
             const files = req.files;
@@ -55,7 +55,7 @@ router.post("/edit/:id", upload.array("photos"), function (req, res){
             }
             if(a.photos.length === 0) {
                 a.photos.push("photos/default")
-            }else if(a.photos.includes("photos/default")){
+            }else if(a.photos.length > 1 && a.photos.includes("photos/default")){
                 a.photos.splice("photos/default", 1)
             }
             a.titre = req.body.titre;

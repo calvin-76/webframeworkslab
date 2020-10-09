@@ -16,14 +16,15 @@ block content
                     button(type="button") Nouvelle annonce
     div.row(style="align-items: flex-end;")
         each annonce in annonces
-            div.col-6.col-md-4
-                div.annonce
-                    h2.annonce-titre #{annonce.type}: #{annonce.titre}
-                    div.annonce-details
-                        p.text-left Prix : #{annonce.prix}€
-                        p.text-left Date de disponibilité : #{annonce.disponibilite.toISOString().substr(0, 10)}
-                        a(href="/annonce/" + annonce.id)
-                            button.btn.btn-secondary(type="button") Voir l'annonce
-                        img(src=annonce.photos[0] alt='Picture not found').img-responsive
-                        p.nomargin= annonce.statutBien
+            if (annonce.statutPublication === "Publié" || user && user.role === 'Admin')
+                div.col-6.col-md-4
+                    div.annonce
+                        h2.annonce-titre #{annonce.type}: #{annonce.titre}
+                        div.annonce-details
+                            p.text-left Prix : #{annonce.prix}€
+                            p.text-left Date de disponibilité : #{annonce.disponibilite.toISOString().substr(0, 10)}
+                            a(href="/annonce/" + annonce.id)
+                                button.btn.btn-secondary(type="button") Voir l'annonce
+                            img(src=annonce.photos[0] alt='Picture not found').img-responsive
+                            p.nomargin= annonce.statutBien
 

@@ -76,6 +76,7 @@ input[type=email], input[type=password], input[type=text], input[type=date], inp
   border: 1px solid #dce6f0;
   border-radius: 6px;
   height: fit-content;
+  white-space: pre-line;
 }
 #description{
   background-color: #f6f6f6;
@@ -183,10 +184,8 @@ label::before {
 }
 
 label img {
-  height: 100px;
-  width: 100px;
-  transition-duration: 0.2s;
-  transform-origin: 50% 50%;
+  height: 125px;
+  width: 125px;
 }
 
 :checked+label {
