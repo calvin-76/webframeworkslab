@@ -39,6 +39,7 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+
 // Connexion a la base de données
 mongoose.connect('mongodb://localhost/testdb')
     .then(() => console.log('MongoDB Connected'))
@@ -69,29 +70,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
-User.register(
-  new User({
-    email: 'az@az.Az',
-    nom: 'Mariette',
-    prenom: 'Calvin',
-    role: 'Utilisateur'
-  }), 'az', function(err, user) {}
-);
-
-var newAnnonce1 = new Annonce({
-    titre: 'Appartement VERO',
-    type: 'Vente',
-    statutPublication: 'Publié',
-    statutBien: 'Disponible',
-    description: 'String',
-    prix: 1000,
-    disponibilite: new Date("<2021-01-01>"),
-    photos:["photos/default"]
-});
-
-Annonce.create(newAnnonce1, function(err,annonce){
-    if(err) throw err;
-    console.log(annonce);
-});
 
 module.exports = app;

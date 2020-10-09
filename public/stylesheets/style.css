@@ -207,3 +207,10 @@ div.col-6.col-md-4 {
 .row {
   margin:0;
 }
+
+.error{
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+}

@@ -4,6 +4,7 @@ var Annonce = require('../models/annonce');
 var Question = require('../models/question');
 var multer = require("multer");
 var upload = multer({ dest: "public/photos" });
+var utils = require ("../utils");
 
 router.get("/:id", function(req, res) {
     Annonce.findById(req.params.id, function(err, response) {
@@ -23,7 +24,7 @@ router.get("/:id", function(req, res) {
     });
 });
 
-router.get("/edit/:id", function(req, res) {
+router.get("/edit/:id", utils.checkAdmin, function(req, res) {
     Annonce.findById(req.params.id, function(err, response) {
         if (!response) {
             res.send("error");
@@ -36,7 +37,9 @@ router.get("/edit/:id", function(req, res) {
     });
 });
 
-router.post("/edit/:id", upload.array("photos"), function (req, res){
+
+
+router.post("/edit/:id", utils.checkAdmin, upload.array("photos"), function (req, res){
     Annonce.findById(req.params.id, function(err, a) {
         if (!a)
             return next(new Error('Could not load Document'));
@@ -76,7 +79,7 @@ router.post("/edit/:id", upload.array("photos"), function (req, res){
     });
 });
 
-router.post("/delete/:id", function(req, res) {
+router.post("/delete/:id", utils.checkAdmin, function(req, res) {
     Annonce.findOneAndDelete({_id: req.params.id }, function (err, docs) {
         if (err){
             console.log(err)
@@ -88,7 +91,7 @@ router.post("/delete/:id", function(req, res) {
     });
 });
 
-router.post("/question/:id", function(req, res) {
+router.post("/question/:id", utils.checkUser, function(req, res) {
     Annonce.findById(req.params.id, function(err, a) {
         if (!a)
             return next(new Error('Could not load Document'));
@@ -113,7 +116,7 @@ router.post("/question/:id", function(req, res) {
     });
 });
 
-router.post("/repondre/:id", function(req, res) {
+router.post("/repondre/:id", utils.checkAdmin, function(req, res) {
     Question.findById(req.params.id, function(err, q) {
         if (!q)
             return next(new Error('Could not load Document'));
@@ -129,5 +132,6 @@ router.post("/repondre/:id", function(req, res) {
         }
     });
 });
+
 
 module.exports = router;

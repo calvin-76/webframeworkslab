@@ -2,10 +2,13 @@ var express = require('express');
 var passport = require('passport');
 var User = require('../models/user');
 var Annonce = require('../models/annonce');
-var app = require('../app');
 var router = express.Router();
 var multer = require("multer");
 var upload = multer({ dest: "public/photos" });
+var utils = require ("../utils");
+
+
+
 
 router.get('/', function (req, res,next) {
   Annonce.find(function(err, annonce) {
@@ -43,11 +46,11 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-router.get('/creerAnnonce', function (req, res) {
-  res.render('creerAnnonce' , {});
+router.get('/creerAnnonce', utils.checkAdmin,  function (req, res) {
+    res.render('creerAnnonce' , {});
 });
 
-router.post('/creerAnnonce', upload.array("photos") ,function (req, res){
+router.post('/creerAnnonce', utils.checkAdmin,  upload.array("photos") ,function (req, res){
   const files = req.files;
   let result = [];
   for (index = 0, len = files.length; index < len; ++index) {
@@ -71,7 +74,6 @@ router.post('/creerAnnonce', upload.array("photos") ,function (req, res){
       console.log(err);
     }
     else {
-      // item.save();
       res.redirect('/');
     }
   });
