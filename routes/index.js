@@ -4,18 +4,7 @@ var User = require('../models/user');
 var Annonce = require('../models/annonce');
 var app = require('../app');
 var router = express.Router();
-var multer = require("multer");/*
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/photos')
-  },
-  filename: function (req, file, cb) {
-    let extArray = file.mimetype.split("/");
-    let extension = extArray[extArray.length - 1];
-    cb(null, file.filename + '.' + extension)
-  }
-})
-var upload = multer({ storage: storage});*/
+var multer = require("multer");
 var upload = multer({ dest: "public/photos" });
 
 router.get('/', function (req, res,next) {
@@ -54,10 +43,6 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-router.post("/upload", upload.single("photos"), function(req, res) {
-  console.log(req.photos);
-});
-
 router.get('/creerAnnonce', function (req, res) {
   res.render('creerAnnonce' , {});
 });
@@ -68,6 +53,7 @@ router.post('/creerAnnonce', upload.array("photos") ,function (req, res){
   for (index = 0, len = files.length; index < len; ++index) {
     result.push((files[index].path).substring(7));
   }
+  if(files.length === 0) result.push("photos/default");
 
   var annonce = {
     titre: req.body.titre,
@@ -89,6 +75,10 @@ router.post('/creerAnnonce', upload.array("photos") ,function (req, res){
       res.redirect('/');
     }
   });
+});
+
+router.post("/upload", upload.single("photos"), function(req, res) {
+  console.log(req.photos);
 });
 
 module.exports = router;

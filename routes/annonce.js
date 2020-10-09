@@ -2,18 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Annonce = require('../models/annonce');
 var Question = require('../models/question');
-var multer = require("multer");/*
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/photos')
-  },
-  filename: function (req, file, cb) {
-    let extArray = file.mimetype.split("/");
-    let extension = extArray[extArray.length - 1];
-    cb(null, file.filename + '.' + extension)
-  }
-})
-var upload = multer({ storage: storage});*/
+var multer = require("multer");
 var upload = multer({ dest: "public/photos" });
 
 router.get("/:id", function(req, res) {

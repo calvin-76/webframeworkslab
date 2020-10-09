@@ -71,11 +71,11 @@ app.use(function(err, req, res, next) {
 
 User.register(
   new User({
-    email: 'test@ff',
+    email: 'az@az.Az',
     nom: 'Mariette',
     prenom: 'Calvin',
     role: 'Utilisateur'
-  }), 'azerty', function(err, user) {}
+  }), 'az', function(err, user) {}
 );
 
 var newAnnonce1 = new Annonce({
@@ -86,7 +86,7 @@ var newAnnonce1 = new Annonce({
     description: 'String',
     prix: 1000,
     disponibilite: new Date("<2021-01-01>"),
-    photos:["photos/1.jpg"]
+    photos:["photos/default"]
 });
 
 Annonce.create(newAnnonce1, function(err,annonce){

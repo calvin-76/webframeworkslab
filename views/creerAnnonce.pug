@@ -7,14 +7,14 @@ block content
                 a(href='/')
                     button.btn.btn-secondary(type="button") Retour
                 h2 Créer une annonce
-                form(role='form', action="/creerAnnonce", method="post", enctype="multipart/form-data")
+                form(role='form' action="/creerAnnonce" method="post" enctype="multipart/form-data")
                     .form-group
                         label.form-controle(for='titre')
                             | Titre de l'annonce
-                        input#titre.form-control(type='text', name="titre")
+                        input#titre.form-control(type='text' name="titre" required='')
                     .form-group
                         .form-check-inline
-                            input#vente.form-check-input(type='radio' name='type' value='Vente')
+                            input#vente.form-check-input(type='radio' name='type' value='Vente' checked='')
                             label.form-check-label(for='vente')
                                 | Vente
                         .form-check-inline
@@ -23,7 +23,7 @@ block content
                                 | Location
                     .form-group
                         .form-check-inline
-                            input#publie.form-check-input(type='radio' name='statutPublication' value='Publié')
+                            input#publie.form-check-input(type='radio' name='statutPublication' value='Publié' checked='')
                             label.form-check-label(for='publie')
                                 | Publié
                         .form-check-inline
@@ -32,7 +32,7 @@ block content
                                 | Non Publié
                     .form-group
                         .form-check-inline
-                            input#disponible.form-check-input(type='radio' name='statutBien' value='Disponible')
+                            input#disponible.form-check-input(type='radio' name='statutBien' value='Disponible' checked='')
                             label.form-check-label(for='disponible')
                                 | Disponible
                         .form-check-inline
@@ -46,17 +46,17 @@ block content
                     .form-group
                         label.form-controle(for='description')
                             | Description de l'annonce
-                        input#description.form-control(type='text', name="description")
+                        input#description.form-control(type='text' name="description" required='')
                     .form-group
                         label.form-controle(for='prix')
                             | Prix du bien
-                        input#prix.form-control(type='number', name="prix")
+                        input#prix.form-control(type='number' name="prix" required='')
                     .form-group
                         label.form-controle(for='disponibilite')
                             | Disponibilité du bien
-                        input#disponibilite.form-control(type='date', name="disponibilite")
+                        input#disponibilite.form-control(type='date' name="disponibilite" required='')
                     .form-group
                         label.form-controle(for='photos')
                             | Photo(s)
-                        input#photos.form-control(type='file', name="photos", multiple='')
+                        input#photos.form-control(type='file' name="photos" multiple='' accept='image/*')
                     input(type='submit' value='Valider')
