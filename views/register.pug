@@ -1,19 +1,18 @@
 extends layout
 
 block content
-    .container
-        .wrapper
-            #content-form
-                a(href='/')
-                    button.btn.btn-secondary(type="button") Retour
-                form(role='form' action='/register' method='post')
-                    h2 Renseignements personnels
-                    input(type='text' name='nom' placeholder='Nom' required='')
-                    input(type='text' name='prenom' placeholder='Prenom' required='')
-                    input(type='text' name='code' placeholder='Code AI (facultatif)')
-                    h2 Informations de connexion
-                    input(type='email' name='email' placeholder='Adresse email' required='')
-                    input(type='password' name='password' placeholder='Mot de passe' required='')
-                    input(type='submit' value='Inscription')
-                #footer-form
-                    a(href='/login') Déja inscrit?
+    .wrapper
+        #content-form
+            a(href='/')
+                button.btn.btn-secondary(type="button") Retour
+            form(role='form' action='/register' method='post')
+                h2 Renseignements personnels
+                input(type='text' name='nom' placeholder='Nom' required='')
+                input(type='text' name='prenom' placeholder='Prenom' required='')
+                input(type='text' name='code' placeholder='Code AI (facultatif)')
+                h2 Informations de connexion
+                input(type='email' name='email' placeholder='Adresse email' required='')
+                input(type='password' name='password' placeholder='Mot de passe' required='')
+                input(type='submit' value='Inscription')
+            #footer-form
+                a(href='/login') Déja inscrit?

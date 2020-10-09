@@ -1,14 +1,13 @@
 extends layout
 
 block content
-    .container
-        .wrapper
-            #content-form
-                a(href='/')
-                    button.btn.btn-secondary(type="button") Retour
-                form(role='form' action='/login' method='post')
-                    input(type='email' name='email' placeholder='Adresse email' required='')
-                    input(type='password' name='password' placeholder='Mot de passe' required='')
-                    input(type='submit' value='Connexion')
-                #footer-form
-                    a(href='/register') Pas encore inscrit?
+    .wrapper
+        #content-form
+            a(href='/')
+                button.btn.btn-secondary(type="button") Retour
+            form(role='form' action='/login' method='post')
+                input(type='email' name='email' placeholder='Adresse email' required='')
+                input(type='password' name='password' placeholder='Mot de passe' required='')
+                input(type='submit' value='Connexion')
+            #footer-form
+                a(href='/register') Pas encore inscrit?

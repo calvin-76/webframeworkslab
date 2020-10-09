@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font-size: 15px;
   font-family: "Poppins", sans-serif;
   height: 100vh;
@@ -15,12 +14,10 @@ body {
   justify-content: center;
   width: 100%;
   min-height: 100%;
-  padding: 20px;
 }
 
 #content-form {
   background: #fff;
-  width: 90%;
   max-width: 450px;
   position: relative;
   padding: 0;
@@ -76,7 +73,6 @@ input[type=email], input[type=password], input[type=text], input[type=date], inp
   border: 1px solid #dce6f0;
   border-radius: 6px;
   height: fit-content;
-  white-space: pre-line;
 }
 #description{
   background-color: #f6f6f6;
@@ -113,9 +109,8 @@ img {
 
 .annonce {
   background-color: white;
-  margin: 6px;
+  margin: 10px;
   text-align: center;
-  border: solid 1px #94a2b8;
 }
 
 .annonce-titre {
@@ -184,8 +179,10 @@ label::before {
 }
 
 label img {
-  height: 125px;
-  width: 125px;
+  height: 100px;
+  width: 100px;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
 }
 
 :checked+label {

@@ -1,75 +1,74 @@
 extends layout
 
 block content
-    .container
-        .wrapper
-            #content-form
-                a(href='/')
-                    button.btn.btn-secondary(type="button") Retour
-                div.header
-                    if (user)
-                        if (user.role === 'Admin')
-                            a(href="edit/" + annonce.id)
-                                button(type="button") Modifier annonce
-                            form(role='form', action="delete/" + annonce.id, method="post")
-                                button(type="submit") Supprimer annonce
-                div.annonce
-                    h2.annonce-titre #{annonce.type}: #{annonce.titre}
-                    div.annonce-details
-                        h5.text-left Prix :
-                        p.text-left #{annonce.prix}€
-                        h5.text-left Date de disponibilité :
-                        p.text-left #{annonce.disponibilite.toISOString().substr(0, 10)}
-                        h5.text-left Description :
-                        p.text-justify #{annonce.description}
-                        #carouselExampleIndicators.carousel.slide(data-ride='carousel')
-                            ol.carousel-indicators
-                                li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
-                                if annonce.photos.length > 1
-                                    each photo in annonce.photos.slice(1)
-                                        li(data-target='#carouselExampleIndicators' data-slide-to=annonce.photos.indexOf(photo))
-                            .carousel-inner
-                                .carousel-item.active
-                                    img.d-block.w-100(src="../" + annonce.photos[0] alt='slide')
-                                if annonce.photos.length > 1
-                                    each photo in annonce.photos.slice(1)
-                                        .carousel-item
-                                            img.d-block.w-100(src="../" + photo alt='slidfe')
-                            a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
-                                span.carousel-control-prev-icon(aria-hidden='true')
-                                span.sr-only Previous
-                            a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
-                                span.carousel-control-next-icon(aria-hidden='true')
-                                span.sr-only Next
-                        p.nomargin= annonce.statutBien
+    .wrapper
+        #content-form
+            a(href='/')
+                button.btn.btn-secondary(type="button") Retour
+            div.header
+                if (user)
+                    if (user.role === 'Admin')
+                        a(href="edit/" + annonce.id)
+                            button(type="button") Modifier annonce
+                        form(role='form', action="delete/" + annonce.id, method="post")
+                            button(type="submit") Supprimer annonce
+            div.annonce
+                h2.annonce-titre #{annonce.type}: #{annonce.titre}
+                div.annonce-details
+                    h5.text-left Prix :
+                    p.text-left #{annonce.prix}€
+                    h5.text-left Date de disponibilité :
+                    p.text-left #{annonce.disponibilite.toISOString().substr(0, 10)}
+                    h5.text-left Description :
+                    p.text-justify #{annonce.description}
+                    #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+                        ol.carousel-indicators
+                            li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
+                            if annonce.photos.length > 1
+                                each photo in annonce.photos.slice(1)
+                                    li(data-target='#carouselExampleIndicators' data-slide-to=annonce.photos.indexOf(photo))
+                        .carousel-inner
+                            .carousel-item.active
+                                img.d-block.w-100(src="../" + annonce.photos[0] alt='slide')
+                            if annonce.photos.length > 1
+                                each photo in annonce.photos.slice(1)
+                                    .carousel-item
+                                        img.d-block.w-100(src="../" + photo alt='slidfe')
+                        a.carousel-control-prev(href='#carouselExampleIndicators' role='button' data-slide='prev')
+                            span.carousel-control-prev-icon(aria-hidden='true')
+                            span.sr-only Previous
+                        a.carousel-control-next(href='#carouselExampleIndicators' role='button' data-slide='next')
+                            span.carousel-control-next-icon(aria-hidden='true')
+                            span.sr-only Next
+                    p.nomargin= annonce.statutBien
 
 
-                    h2.annonce-titre F.A.Q
-                    if (!user)
-                        div.questions
-                            p Vous devez être connecté pour poser une question !
-                            a(href="/login")
-                                button(type="button") Connexion
-                    else
-                        if (user)
-                            if (user.role === 'Utilisateur')
-                                div.questions
-                                    form(role='form', action="question/" + annonce.id, method="post")
-                                        input(type='text', name="inputQuestion" placeholder='Posez une question..').question
-                                        button(type="submit") Valider la question
+                h2.annonce-titre F.A.Q
+                if (!user)
                     div.questions
-                        each question in questions
-                            div.reponse
-                                b Question :
-                                p #{question.text}
-                                b Réponses :
-                                each rep in question.reponses
-                                    p #{rep}
-                                if (typeof user != 'undefined')
-                                    if (user.role === 'Admin')
-                                        form(role='form', action="repondre/" + question.id, method="post")
-                                            input(type='text', name="inputReponse" placeholder='Répondez à la question...').question
-                                            button(type="submit") Valider la réponse
+                        p Vous devez être connecté pour poser une question
+                        a(href="/login")
+                            button(type="button") Connexion
+                else
+                    if (user)
+                        if (user.role === 'Utilisateur')
+                            div.questions
+                                form(role='form', action="question/" + annonce.id, method="post")
+                                    input(type='text', name="inputQuestion" placeholder='Posez une question..').question
+                                    button(type="submit") Valider la question
+                div.questions
+                    each question in questions
+                        div.reponse
+                            b Question :
+                            p #{question.text}
+                            b Réponses :
+                            each rep in question.reponses
+                                p #{rep}
+                            if (typeof user != 'undefined')
+                                if (user.role === 'Admin')
+                                    form(role='form', action="repondre/" + question.id, method="post")
+                                        input(type='text', name="inputReponse" placeholder='Répondez à la question...').question
+                                        button(type="submit") Valider la réponse
 
 
 

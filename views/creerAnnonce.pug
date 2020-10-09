@@ -1,62 +1,61 @@
 extends layout
 
 block content
-    .container
-        .wrapper
-            #content-form
-                a(href='/')
-                    button.btn.btn-secondary(type="button") Retour
-                h2 Créer une annonce
-                form(role='form' action="/creerAnnonce" method="post" enctype="multipart/form-data")
-                    .form-group
-                        label.form-controle(for='titre')
-                            | Titre de l'annonce
-                        input#titre.form-control(type='text' name="titre" required='')
-                    .form-group
-                        .form-check-inline
-                            input#vente.form-check-input(type='radio' name='type' value='Vente' checked='')
-                            label.form-check-label(for='vente')
-                                | Vente
-                        .form-check-inline
-                            input#location.form-check-input(type='radio' name='type' value='Location')
-                            label.form-check-label(for='location')
-                                | Location
-                    .form-group
-                        .form-check-inline
-                            input#publie.form-check-input(type='radio' name='statutPublication' value='Publié' checked='')
-                            label.form-check-label(for='publie')
-                                | Publié
-                        .form-check-inline
-                            input#nonPublie.form-check-input(type='radio' name='statutPublication' value='NonPublié')
-                            label.form-check-label(for='nonPublie')
-                                | Non Publié
-                    .form-group
-                        .form-check-inline
-                            input#disponible.form-check-input(type='radio' name='statutBien' value='Disponible' checked='')
-                            label.form-check-label(for='disponible')
-                                | Disponible
-                        .form-check-inline
-                            input#louee.form-check-input(type='radio' name='statutBien' value='Louée')
-                            label.form-check-label(for='louee')
-                                | Louée
-                        .form-check-inline
-                            input#vendu.form-check-input(type='radio' name='statutBien' value='Vendu')
-                            label.form-check-label(for='vendu')
-                                | Vendu
-                    .form-group
-                        label.form-controle(for='description')
-                            | Description de l'annonce
-                        textarea#description.form-control(type='text' name="description" rows="8" required='')
-                    .form-group
-                        label.form-controle(for='prix')
-                            | Prix du bien
-                        input#prix.form-control(type='number' name="prix" required='')
-                    .form-group
-                        label.form-controle(for='disponibilite')
-                            | Disponibilité du bien
-                        input#disponibilite.form-control(type='date' name="disponibilite" required='')
-                    .form-group
-                        label.form-controle(for='photos')
-                            | Photo(s)
-                        input#photos.form-control(type='file' name="photos" multiple='' accept='image/*')
-                    input(type='submit' value='Valider')
+    .wrapper
+        #content-form
+            a(href='/')
+                button.btn.btn-secondary(type="button") Retour
+            h2 Créer une annonce
+            form(role='form' action="/creerAnnonce" method="post" enctype="multipart/form-data")
+                .form-group
+                    label.form-controle(for='titre')
+                        | Titre de l'annonce
+                    input#titre.form-control(type='text' name="titre" required='')
+                .form-group
+                    .form-check-inline
+                        input#vente.form-check-input(type='radio' name='type' value='Vente' checked='')
+                        label.form-check-label(for='vente')
+                            | Vente
+                    .form-check-inline
+                        input#location.form-check-input(type='radio' name='type' value='Location')
+                        label.form-check-label(for='location')
+                            | Location
+                .form-group
+                    .form-check-inline
+                        input#publie.form-check-input(type='radio' name='statutPublication' value='Publié' checked='')
+                        label.form-check-label(for='publie')
+                            | Publié
+                    .form-check-inline
+                        input#nonPublie.form-check-input(type='radio' name='statutPublication' value='NonPublié')
+                        label.form-check-label(for='nonPublie')
+                            | Non Publié
+                .form-group
+                    .form-check-inline
+                        input#disponible.form-check-input(type='radio' name='statutBien' value='Disponible' checked='')
+                        label.form-check-label(for='disponible')
+                            | Disponible
+                    .form-check-inline
+                        input#louee.form-check-input(type='radio' name='statutBien' value='Louée')
+                        label.form-check-label(for='louee')
+                            | Louée
+                    .form-check-inline
+                        input#vendu.form-check-input(type='radio' name='statutBien' value='Vendu')
+                        label.form-check-label(for='vendu')
+                            | Vendu
+                .form-group
+                    label.form-controle(for='description')
+                        | Description de l'annonce
+                    textarea#description.form-control(type='text' name="description" rows="8" required='')
+                .form-group
+                    label.form-controle(for='prix')
+                        | Prix du bien
+                    input#prix.form-control(type='number' name="prix" required='')
+                .form-group
+                    label.form-controle(for='disponibilite')
+                        | Disponibilité du bien
+                    input#disponibilite.form-control(type='date' name="disponibilite" required='')
+                .form-group
+                    label.form-controle(for='photos')
+                        | Photo(s)
+                    input#photos.form-control(type='file' name="photos" multiple='' accept='image/*')
+                input(type='submit' value='Valider')
