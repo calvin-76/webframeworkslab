@@ -18,11 +18,12 @@ body {
 
 #content-form {
   background: #fff;
-  max-width: 450px;
+  width: 400px;
   position: relative;
   padding: 10px;
   margin: 20px;
   text-align: center;
+  border-radius: 20px;
 }
 
 #footer-form {
@@ -31,7 +32,6 @@ body {
   padding: 2vw;
   text-align: center;
 }
-
 
 button {
   background-color: #56baed;
@@ -106,6 +106,21 @@ img {
   font-size: 60px;
   text-transform: uppercase;
   font-family: "Freestyle Script";
+}
+
+user-match-container {
+  position: relative;
+  padding-top: 22px;
+}
+
+.match-owner {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
 }
 
 .annonce {
