@@ -46,7 +46,7 @@ block content
                     .form-group
                         label.form-controle(for='description')
                             | Description de l'annonce
-                        input#description.form-control(type='text' name="description" value=annonce.description required='')
+                        textarea#description.form-control(type='text' name="description" required='' rows="8") #{annonce.description}
                     .form-group
                         label.form-controle(for='prix')
                             | Prix du bien
@@ -62,7 +62,7 @@ block content
                             .form-check
                                 input.form-check-input.invisible(type='checkbox' id='defaultCheck'+annonce.photos.indexOf(photo) name="image" value=photo)
                                 label.form-check-label(for='defaultCheck'+annonce.photos.indexOf(photo))
-                                    img.d-block.w-100(src="../../" + photo alt='slidfe')
+                                    img.d-block.w-100(src="../../" + photo alt='slide')
                     .form-group
                         label.form-controle(for='photos')
                             | Photo(s)

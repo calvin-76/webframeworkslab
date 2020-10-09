@@ -16,9 +16,12 @@ block content
                 div.annonce
                     h2.annonce-titre #{annonce.type}: #{annonce.titre}
                     div.annonce-details
-                        p.text-left Prix : #{annonce.prix}€
-                        p.text-left Date de disponibilité : #{annonce.disponibilite.toISOString().substr(0, 10)}
-
+                        h5.text-left Prix :
+                        p.text-left #{annonce.prix}€
+                        h5.text-left Date de disponibilité :
+                        p.text-left #{annonce.disponibilite.toISOString().substr(0, 10)}
+                        h5.text-left Description :
+                        p.text-justify #{annonce.description}
                         #carouselExampleIndicators.carousel.slide(data-ride='carousel')
                             ol.carousel-indicators
                                 li.active(data-target='#carouselExampleIndicators' data-slide-to='0')
